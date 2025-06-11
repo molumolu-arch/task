@@ -16,6 +16,11 @@ cd task
 docker-compose up --build
 ```
 
+### 3. Create superuser 
+```bash
+docker-compose exec django python manage.py createsuperuser
+```
+
 ## Migrations 
 
 * **`0001_initial.py`**: Sets up the custom `User` model, including a `coins` field and making `username` unique.
