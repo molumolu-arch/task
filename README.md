@@ -1,6 +1,4 @@
 # test_task
-git clone https://github.com/molumolu-arch/task.git
-cd task
 
 ##To run 
 
