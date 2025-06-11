@@ -34,9 +34,10 @@ docker-compose exec django python manage.py createsuperuser
     * Adds `related_name` attributes to foreign keys for better reverse relationships.
 ## EndPoints 
 
-* `/api/token/`
-* `/api/token/refresh/`
-* `/api/token/verify/`
-* `/api/profile/`
-* `/api/rewards/`
-* `/api/request/`
+* `/api/admin/`*
+* `/api/token/`* 
+* `/api/token/refresh/`*
+* `/api/token/verify/`*
+* `/api/profile/`*
+* `/api/rewards/`*
+* `/api/request/`*
