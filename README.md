@@ -35,9 +35,9 @@ docker-compose exec django python manage.py createsuperuser
 ## EndPoints 
 
 * `/api/admin/`: Creates and manages users and scheduled rewards.
-* `/api/token/`: Given credentials `username` and `password` return `refresh` and `access` token pair.
-* `/api/token/refresh/`: Given `refresh` toekn provides new `access` token.
+* `/api/token/`: Given credentials `username` and `password` returns `refresh` and `access` token pair.
+* `/api/token/refresh/`: Given `refresh` token provides new `access` token.
 * `/api/token/verify/`: Verifies given `access` token.
 * `/api/profile/`: Returns user's `username`,`email` and `coins` if user is authenticated.
 * `/api/rewards/`: Returns user's reward history if user is authenticated.
-* `/api/request/` Allows user to make a request once a day to recieve a reward. Created `ScheduledReward` if succesful and grants user a reward in 5 minutes.
+* `/api/request/` Allows user to make a request once a day to recieve a reward. Creates `ScheduledReward` if succesful and grants user a reward in 5 minutes.
