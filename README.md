@@ -18,7 +18,7 @@ cd task
 docker-compose up --build
 ```
 
-##Migrations 
+## Migrations 
 
 * **`0001_initial.py`**: Sets up the custom `User` model, including a `coins` field and making `username` unique.
 * **`0002_rewardlog_scheduledreward.py`**: Adds `RewardLog` (for tracking given rewards) and `ScheduledReward` (for future rewards) models.
@@ -29,3 +29,11 @@ docker-compose up --build
     * Removes the `request` field from the `User` model.
     * Updates timestamp handling for `given_at` and `requested_at` fields to `auto_now_add=True`.
     * Adds `related_name` attributes to foreign keys for better reverse relationships.
+## EndPoints 
+
+* `/token/`
+* `/token/refresh/`
+* `/token/verify/`
+* `/profile/`
+* `/rewards/`
+* `/request/`
