@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import User, ScheduledReward, RewardLog, RewardRequestLog
+from .models import User
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from django.contrib.auth.forms import UserChangeForm
 
@@ -9,10 +9,7 @@ class UserAdmin(BaseUserAdmin):
   form = UserChangeForm
   fieldsets = (
       (None, {'fields': ('email', 'password','username' )}),
-      (('Personal info'), {'fields': ('first_name', 'last_name')}),
-      (('Permissions'), {'fields': ('is_active', 'is_staff', 'is_superuser',
-                                     'groups', 'user_permissions')}),
-      (('Important dates'), {'fields': ('last_login', 'date_joined')}),
+      (('Permissions'), {'fields': ('is_active', 'is_staff', 'is_superuser',)}),
         (('user_info'), {'fields': ('coins',)}),
   )
   add_fieldsets = (
@@ -21,12 +18,9 @@ class UserAdmin(BaseUserAdmin):
           'fields': ('username','email', 'password1', 'password2'),
       }),
   )
-  list_display = ['email', 'first_name', 'last_name', 'is_staff', "coins"]
-  search_fields = ('email', 'first_name', 'last_name')
+  list_display = ['email', 'is_staff', "coins"]
+  search_fields = ('email', 'username')
   ordering = ('email', )
   
 admin.site.register(User, UserAdmin)
 
-admin.site.register(ScheduledReward)
-admin.site.register(RewardRequestLog)
-admin.site.register(RewardLog)

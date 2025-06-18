@@ -25,3 +25,5 @@ wcwidth==0.2.13
 redis
 psycopg2-binary
 drf-yasg
+gunicorn
+whitenoise

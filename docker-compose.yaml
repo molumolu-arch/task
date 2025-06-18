@@ -1,23 +1,37 @@
 
 services:
     django:
-        build: .
+        build: 
+          context: .
+          args:
+            SECRET_KEY: ${SECRET_KEY}
+            DEBUG: ${DEBUG}
         container_name: django
-        command: sh -c "python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
+        #command: tail -f /dev/null
+        env_file:
+            - .env
+        working_dir: /app/app  
+        command: sh -c "gunicorn app.wsgi:application --bind 0.0.0.0:8000"
         volumes:
             - .:/app
         ports:
             - "8000:8000"
-        environment:
-            - DEBUG=1
-            - CELERY_BROKER = redis://redis:6397/0
-            - CELERY_BACKEND = redis://reids:6397/0
         depends_on:
             - pgdb
             - redis
+        
+        
     celery:
-        build: .
+        build: 
+          context: .
+          args:
+            SECRET_KEY: ${SECRET_KEY}
+            DEBUG: ${DEBUG}
+        env_file:
+            - .env
+        #command: tail -f /dev/null
         command: celery --app=app.celery worker --loglevel=info
+        working_dir: /app/app  
         volumes:
             - .:/app
         depends_on:
@@ -26,10 +40,8 @@ services:
     pgdb:
         image: postgres    
         container_name: pgdb
-        environment:
-             - POSTGRES_DB=postgres
-             - POSTGRES_USER=postgres
-             - POSTGRES_PASSWORD=postgres
+        env_file:
+            - .env
         volumes:
              - pgdata:/var/lib/postgresql/data/
     redis:
